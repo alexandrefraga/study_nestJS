@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.entity';
@@ -9,5 +9,14 @@ export class UsersService {
   async create(user): Promise<any> {
     const createdUser = new this.userModel(user);
     return createdUser.save();
+  }
+
+  findAll() {
+    return this.userModel.find().exec();
+  }
+
+  @UsePipes(ValidationPipe)
+  findById(id: string) {
+    return this.userModel.findOne({ _id: id }).exec();
   }
 }

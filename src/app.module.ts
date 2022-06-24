@@ -7,7 +7,7 @@ import { UsersModuleUseMongoose } from './users-mongoose/users.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGODB_ATLAS_URL),
-    UsersModuleUseMongoose
+    UsersModuleUseMongoose,
   ],
   controllers: [],
   providers: [],

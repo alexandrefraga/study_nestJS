@@ -1,11 +1,13 @@
-import { Injectable, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Injectable, UsePipes, ValidationPipe, Scope } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.entity';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
+    console.log('serviço iniciado');
+  }
   async create(user): Promise<any> {
     const createdUser = new this.userModel(user);
     return createdUser.save();

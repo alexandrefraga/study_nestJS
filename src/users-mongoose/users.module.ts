@@ -11,4 +11,8 @@ import { UsersService } from './users.service';
   controllers: [UsersController],
   providers: [UsersService],
 })
-export class UsersModuleUseMongoose {}
+export class UsersModuleUseMongoose {
+  constructor() {
+    console.log('UserModule iniciado');
+  }
+}

@@ -5,7 +5,9 @@ import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService) {
+    console.log('UsersController iniciado');
+  }
 
   @Post()
   handle(@Body() user: CreateUserDto) {

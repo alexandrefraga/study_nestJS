@@ -1,0 +1,10 @@
+#POST /auth/login
+curl -X POST http://localhost:3001/auth/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
+
+# GET /profile
+curl http://localhost:3001/profile
+# result -> {"statusCode":401,"message":"Unauthorized"}
+
+# GET /profile using access_token returned from previous step as bearer code
+curl http://localhost:3001/profile -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJzdWIiOjEsImlhdCI6MTY3MTgyMjI3OCwiZXhwIjoxNjcxODIyMzM4fQ.XLR379koXB9CzUX0yG36RADzEDaXIQgZSVnnq9BeFVs"
+# result -> {"userId":1,"username":"john"}
